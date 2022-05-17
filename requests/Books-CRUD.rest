@@ -1,0 +1,7 @@
+@url=http://localhost:5000
+
+### home
+GET {{url}}
+
+### books
+GET {{url}}/books
