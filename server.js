@@ -1,8 +1,8 @@
 const dotenv = require("dotenv");
 const express = require("express");
 const { connectDb } = require("./db-connect");
-const User = require("./models/Users");
 const Book=require("./models/Books");
+const usersRouter = require("./routes/users.router");
 
 const env = dotenv.config();
 console.log("Loaded environment config: ", env);
@@ -10,6 +10,8 @@ console.log("Loaded environment config: ", env);
 connectDb();
 
 const app = express();
+
+app.use(express.json())
 
 app.get("/", (req, res) => {
   res.send(`
@@ -21,15 +23,12 @@ app.get("/", (req, res) => {
     `);
 });
 
-app.get("/users", async (req, res) => {
-    const usersAll = await User.find();
-  res.json(usersAll);
-});
-
 app.get("/books", async (req, res) => {
     const booksAll=await Book.find();
   res.json(  booksAll);
 });
+
+app.use("/users", usersRouter)
 
 // handle non existing routes
 app.use((req, res, next) => {
