@@ -6,5 +6,15 @@ GET {{url}}
 ### books
 GET {{url}}/books
 
-### users
+### users All
 GET {{url}}/users
+
+### user Create
+POST {{url}}/users
+Content-Type: application/json
+
+{
+    "name": "John",
+    "email": "john@John.com",
+    "password": "john1"
+} 
