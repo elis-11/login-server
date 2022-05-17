@@ -15,7 +15,16 @@ app.get('/', (req, res) => {
     <div>Our routes:<div>
     <div>Home: <a href="/">/</a></div>
     <div>Books: <a href="/books">/books</a></div>
+    <div>Users: <a href="/users">/users</a></div>
     `)
+})
+
+app.get('/users', (req, res)=>{
+    res.json([
+        { _id:"u1", name:"Gael", email:"gael@gmail.com", password:"gael1"},
+        { _id:"u2", name:"Elisa", email:"elisa@gmail.com", password:"elisa1"},
+        { _id:"u3", name: "Robert", email:"robert@gmail.com", password:"robert1"},
+    ])
 })
 
 app.get('/books', (req, res) => {
