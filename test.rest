@@ -9,20 +9,20 @@ GET {{url}}/books
 ###  All users
 GET {{url}}/users
 
-###  Create user
+###  user Create / signup
 POST {{url}}/users
 Content-Type: application/json
 
 {
-    "name": "Muslim",
-    "email": "muslim@gmail.com",
-    "password": "muslim1"
+    "name": "Milena",
+    "email": "milena@gmail.com",
+    "password": "milena1"
 }  
 ###  Login user
 POST {{url}}/users/login
 Content-Type: application/json
 
 {
-    "email": "iren@gmail.com",
-    "password": "iren1"
+    "email": "milena@gmail.com",
+    "password": "milena1"
 } 
