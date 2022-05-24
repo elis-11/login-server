@@ -55,6 +55,8 @@ usersRouter.post("/login", async (req, res) => {
       error: "User does not exist! Try with other email / password. Typo?"
     })
 
+    req.session.user=userFound
+
   // user exists! respond with found user
   res.json( userFound )
 })
