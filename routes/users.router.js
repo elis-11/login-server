@@ -10,6 +10,18 @@ usersRouter.get("/", async (req, res) => {
   res.json(usersAll);
 });
 
+// GET /users/me
+// just one purpose => check if I am still logged in
+usersRouter.get("/me", (req, res) =>{
+  if(!req.session.user){
+    return res.status(401).json({
+      error: "You are not logged in"
+    })
+  }
+  // on success: send the stored user info!
+  res.json(req.session.user);
+})
+
 // POST /users
 // create / signup new user
 usersRouter.post("/", async (req, res) => {

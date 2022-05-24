@@ -9,6 +9,10 @@ GET {{url}}/books
 ###  All USERS
 GET {{url}}/users
 
+### Check if I am still logged in and give me my user info
+GET {{url}}/users/me
+
+
 ### Create USER / signup
 POST {{url}}/users
 Content-Type: application/json
