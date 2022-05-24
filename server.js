@@ -13,9 +13,8 @@ connectDb();
 
 const app = express();
 
-// app.use(cors({origin: `http://localhost:5000`, credentials: true}));
-// app.use(cors({origin: process.env.MONGO_URI, credentials: true}));
-app.use(cors())
+app.use(cors({ origin: process.env.FRONTEND_ORIGIN, credentials: true }));
+// app.use(cors())
 app.use(express.json());
 app.use(
   session({
@@ -24,9 +23,11 @@ app.use(
     proxy: true, // needed later for heroku deployment
     saveUninitialized: false, // saveUninitialized: true => ceate cookies on each request!
     resave: false, // do not resave session on each request if there were no changes
-    cookies: {
+    cookie: {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60*24,
+      maxAge: 1000*60*60*24,
+      sameSite: 'lax',
+      secure: false
       // sameSite:"none",
       // secure: true
     },
