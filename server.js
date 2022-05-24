@@ -18,18 +18,25 @@ app.use(cors({ origin: process.env.FRONTEND_ORIGIN, credentials: true }));
 app.use(express.json());
 app.use(
   session({
-    // secret: "tralala",
     secret: process.env.SESSION_SECRET,
     proxy: true, // needed later for heroku deployment
-    saveUninitialized: false, // saveUninitialized: true => ceate cookies on each request!
+    saveUninitialized: true, // saveUninitialized: true => ceate cookies on each request!
     resave: false, // do not resave session on each request if there were no changes
     cookie: {
       httpOnly: true,
       maxAge: 1000*60*60*24,
       sameSite: 'lax',
       secure: false
-      // sameSite:"none",
-      // secure: true
+    // secret: process.env.SESSION_SECRET,
+    // proxy: true, // needed later for heroku deployment
+    // resave: true,
+    // saveUninitialized: true,
+    // cookie: {
+    //   httpOnly: true,
+    //   maxAge: 60 * 60 * 1000 * 24,
+    //   sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    //   secure: process.env.NODE_ENV === "production",
+
     },
   })
 );
