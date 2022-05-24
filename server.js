@@ -27,16 +27,6 @@ app.use(
       maxAge: 1000*60*60*24,
       sameSite: 'lax',
       secure: false
-    // secret: process.env.SESSION_SECRET,
-    // proxy: true, // needed later for heroku deployment
-    // resave: true,
-    // saveUninitialized: true,
-    // cookie: {
-    //   httpOnly: true,
-    //   maxAge: 60 * 60 * 1000 * 24,
-    //   sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-    //   secure: process.env.NODE_ENV === "production",
-
     },
   })
 );
@@ -51,7 +41,26 @@ app.get("/", (req, res) => {
     `);
 });
 
-app.get("/books", async (req, res) => {
+const auth=(req, res, next) => {
+  console.log("BOOKS SESSION:", req.session.user);
+  if(!req.session.user){
+    return res.status(401).json({
+      error: "[OUCH] You have no rights to be here whatsover!"
+    })
+  }
+  next();
+}
+
+// app.get("/books", auth, (req, res) => {
+//   res.json([
+//     { _id: "b1", title: "Name of the Wind", author: "Jadon Sanderson"},
+//     { _id: "b2", title: "Die Verwandlung", author: "Franz Kafka"},
+//     { _id: "b3", title: "Das Glasperlenspiel", author: "Hermann Hesse"}
+//   ])
+// })
+
+
+app.get("/books", auth, async (req, res) => {
   const booksAll = await Book.find();
   res.json(booksAll);
 });
