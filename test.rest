@@ -3,7 +3,7 @@
 ### home
 GET {{url}}
 
-### books
+### All books
 GET {{url}}/books
 
 ###  All users
@@ -14,15 +14,15 @@ POST {{url}}/users
 Content-Type: application/json
 
 {
-    "name": "rosa",
-    "email": "rosa@gmail.com",
-    "password": "rosa1"
+    "name": "aman",
+    "email": "aman@gmail.com",
+    "password": "aman1"
 }  
 ###  Login user
 POST {{url}}/users/login
 Content-Type: application/json
 
 {
-    "email": "rosa@gmail.com",
-    "password": "rosa1"
+    "email": "aman@gmail.com",
+    "password": "aman1"
 } 

@@ -20,7 +20,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     proxy: true, // needed later for heroku deployment
-    saveUninitialized: true, // saveUninitialized: true => ceate cookies on each request!
+    saveUninitialized: false, // saveUninitialized: true => ceate cookies on each request!
     resave: false, // do not resave session on each request if there were no changes
     cookie: {
       httpOnly: true,
