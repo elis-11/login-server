@@ -1,20 +1,19 @@
-@url=http://localhost:5000
+@URL_API=http://localhost:5000
 
 ### HOME
-GET {{url}}
+GET {{URL_API}}
 
 ### All BOOKS
-GET {{url}}/books
+GET {{URL_API}}/books
 
 ###  All USERS
-GET {{url}}/users
+GET {{URL_API}}/users
 
 ### Check if I am still logged in and give me my user info
-GET {{url}}/users/me
-
+GET {{URL_API}}/users/me
 
 ### Create USER / signup
-POST {{url}}/users
+POST {{URL_API}}/users
 Content-Type: application/json
 
 {
@@ -24,7 +23,7 @@ Content-Type: application/json
 }  
 
 ### Login USER 
-POST {{url}}/users/login
+POST {{URL_API}}/users/login
 Content-Type: application/json
 
 {
@@ -33,4 +32,4 @@ Content-Type: application/json
 } 
   
 ### Logout USER
-GET {{url}}/users/logout
+GET {{URL_API}}/users/logout

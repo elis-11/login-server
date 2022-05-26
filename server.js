@@ -5,7 +5,6 @@ const { connectDb } = require("./db-connect");
 const Book = require("./models/Books");
 const usersRouter = require("./routes/users.router");
 const session = require("express-session");
-
 const env = dotenv.config();
 console.log("Loaded environment config: ", env);
 
@@ -58,8 +57,7 @@ const auth=(req, res, next) => {
 //     { _id: "b3", title: "Das Glasperlenspiel", author: "Hermann Hesse"}
 //   ])
 // })
-
-
+//     ||
 app.get("/books", auth, async (req, res) => {
   const booksAll = await Book.find();
   res.json(booksAll);
