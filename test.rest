@@ -17,9 +17,9 @@ POST {{URL_API}}/users
 Content-Type: application/json
 
 {
-    "name": "aman",
-    "email": "aman@gmail.com",
-    "password": "aman1"
+    "name": "sara",
+    "email": "sara@gmail.com",
+    "password": "sara1"
 }  
 
 ### Login USER 
@@ -27,8 +27,8 @@ POST {{URL_API}}/users/login
 Content-Type: application/json
 
 {
-    "email": "aman@gmail.com",
-    "password": "aman1"
+    "email": "sara@gmail.com",
+    "password": "sara1"
 } 
   
 ### Logout USER

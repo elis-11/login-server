@@ -23,9 +23,11 @@ app.use(
     resave: false, // do not resave session on each request if there were no changes
     cookie: {
       httpOnly: true,
-      maxAge: 1000*60*60*24,
-      sameSite: 'lax',
-      secure: false
+      maxAge: 1000 * 60 * 60 * 24,
+      // sameSite: "lax",
+      // secure: false,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none": "lax",
     },
   })
 );
@@ -40,15 +42,15 @@ app.get("/", (req, res) => {
     `);
 });
 
-const auth=(req, res, next) => {
+const auth = (req, res, next) => {
   console.log("BOOKS SESSION:", req.session.user);
-  if(!req.session.user){
+  if (!req.session.user) {
     return res.status(401).json({
-      error: "[OUCH] You have no rights to be here whatsover!"
-    })
+      error: "[OUCH] You have no rights to be here whatsover!",
+    });
   }
   next();
-}
+};
 
 // app.get("/books", auth, (req, res) => {
 //   res.json([
